@@ -1,0 +1,15 @@
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/bin/Debug/net7.0/Persistence.deps.json
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/bin/Debug/net7.0/Persistence.dll
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/bin/Debug/net7.0/Persistence.pdb
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/bin/Debug/net7.0/Domain.dll
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/bin/Debug/net7.0/Domain.pdb
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/Persistence.csproj.AssemblyReference.cache
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/Persistence.GeneratedMSBuildEditorConfig.editorconfig
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/Persistence.AssemblyInfoInputs.cache
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/Persistence.AssemblyInfo.cs
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/Persistence.csproj.CoreCompileInputs.cache
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/Persistence.csproj.CopyComplete
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/Persistence.dll
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/refint/Persistence.dll
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/Persistence.pdb
+/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/obj/Debug/net7.0/ref/Persistence.dll
