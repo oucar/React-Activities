@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Domain/Domain.csproj",
+      "projectUniqueName": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Domain/Domain.csproj",
+      "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj",
       "packagesPath": "/Users/onurucar/.nuget/packages/",
-      "outputPath": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Domain/obj/",
+      "outputPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/onurucar/.nuget/NuGet/NuGet.Config"
