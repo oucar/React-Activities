@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2WAlFNfvwsKafOkhovbXPlIparJge0HnQNfgyxDpfy/LrhwGGvkA982S3HbzjgBs5MErfbcFsRBvhjsNdP4uEw==",
+  "dgSpecHash": "bXZ54Il4UqELLZmdPHRSLrvMl8qDdfOwHKWg5QkyKFD0bzWQpilJAKfm1JFmLryBd6pBdOFcKHvzDx4PzPmFfA==",
   "success": true,
-  "projectFilePath": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Application/Application.csproj",
+  "projectFilePath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

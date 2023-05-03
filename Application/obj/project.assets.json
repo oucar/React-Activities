@@ -51,11 +51,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Application/Application.csproj",
+      "projectUniqueName": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/Application.csproj",
       "projectName": "Application",
-      "projectPath": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Application/Application.csproj",
+      "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/Application.csproj",
       "packagesPath": "/Users/onurucar/.nuget/packages/",
-      "outputPath": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Application/obj/",
+      "outputPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/onurucar/.nuget/NuGet/NuGet.Config"
@@ -70,11 +70,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/onurucar/Desktop/Github/DOTNETCore-React/Domain/Domain.csproj": {
-              "projectPath": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Domain/Domain.csproj"
+            "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj": {
+              "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj"
             },
-            "/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/Persistence.csproj": {
-              "projectPath": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/Persistence.csproj"
+            "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/Persistence.csproj": {
+              "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/Persistence.csproj"
             }
           }
         }

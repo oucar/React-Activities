@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TYX64RUcAHeLlLz3NnWFIxLCzfzUB+QsVHJO5KLiRSfa8zmHGjxZ29420WEcb3AVZihay7Cm2owzHUq0tiOwuw==",
+  "dgSpecHash": "k1ajbskxajIqF5rXmCILISKrLzqys9YzFX8ePQma9yz5SIXFmB5E3XV1a8a7xAsrIYLAOGzwDFcR2GqS87H6nQ==",
   "success": true,
-  "projectFilePath": "/Users/onurucar/Desktop/Github/DOTNETCore-React/Persistence/Persistence.csproj",
+  "projectFilePath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/Persistence.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
