@@ -507,7 +507,7 @@
           "bin/placeholder/Domain.dll": {}
         }
       },
-      "Persistance/1.0.0": {
+      "Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -515,10 +515,10 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.9"
         },
         "compile": {
-          "bin/placeholder/Persistance.dll": {}
+          "bin/placeholder/Persistence.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Persistance.dll": {}
+          "bin/placeholder/Persistence.dll": {}
         }
       }
     }
@@ -1164,16 +1164,16 @@
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
     },
-    "Persistance/1.0.0": {
+    "Persistence/1.0.0": {
       "type": "project",
-      "path": "../Persistance/Persistance.csproj",
-      "msbuildProject": "../Persistance/Persistance.csproj"
+      "path": "../Persistence/Persistence.csproj",
+      "msbuildProject": "../Persistence/Persistence.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "Domain >= 1.0.0",
-      "Persistance >= 1.0.0"
+      "Persistence >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1206,8 +1206,8 @@
             "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistance\\Persistance.csproj": {
-              "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistance\\Persistance.csproj"
+            "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj"
             }
           }
         }

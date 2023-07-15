@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Persistance;
+using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,5 +29,24 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+// Create the database
+// Once we're done with the scope, anything inside will be cleaned from the memory.
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+try
+{
+    var context = services.GetRequiredService<DataContext>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedData(context);
+}
+catch (Exception ex)
+{
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An occured during Initial Database Migration");
+    throw;
+}
 
 app.Run();

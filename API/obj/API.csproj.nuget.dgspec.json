@@ -115,8 +115,8 @@
               "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistance\\Persistance.csproj": {
-                "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistance\\Persistance.csproj"
+              "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj": {
+                "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -211,14 +211,14 @@
         }
       }
     },
-    "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistance\\Persistance.csproj": {
+    "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistance\\Persistance.csproj",
-        "projectName": "Persistance",
-        "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj",
+        "projectName": "Persistence",
+        "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj",
         "packagesPath": "C:\\Users\\ucart\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistance\\obj\\",
+        "outputPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ucart\\AppData\\Roaming\\NuGet\\NuGet.Config",
