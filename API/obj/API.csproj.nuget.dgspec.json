@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/onurucar/Desktop/dotnet/dotnet7-react18/API/API.csproj": {}
+    "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\API\\API.csproj": {}
   },
   "projects": {
-    "/Users/onurucar/Desktop/dotnet/dotnet7-react18/API/API.csproj": {
+    "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/API/API.csproj",
+        "projectUniqueName": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/API/API.csproj",
-        "packagesPath": "/Users/onurucar/.nuget/packages/",
-        "outputPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/API/obj/",
+        "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\ucart\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/onurucar/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ucart\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/Application.csproj": {
-                "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/Application.csproj"
+              "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Application\\Application.csproj"
               }
             }
           }
@@ -70,37 +72,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/Application.csproj": {
+    "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/Application.csproj",
+        "projectUniqueName": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/Application.csproj",
-        "packagesPath": "/Users/onurucar/.nuget/packages/",
-        "outputPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Application/obj/",
+        "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\ucart\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/onurucar/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ucart\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj": {
-                "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj"
+              "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj"
               },
-              "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/Persistence.csproj": {
-                "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/Persistence.csproj"
+              "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj": {
+                "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -130,26 +134,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj": {
+    "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj",
-        "packagesPath": "/Users/onurucar/.nuget/packages/",
-        "outputPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/obj/",
+        "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\ucart\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/onurucar/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ucart\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -167,6 +173,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -183,34 +195,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/Persistence.csproj": {
+    "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/Persistence.csproj",
-        "packagesPath": "/Users/onurucar/.nuget/packages/",
-        "outputPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Persistence/obj/",
+        "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\ucart\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/onurucar/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ucart\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj": {
-                "projectPath": "/Users/onurucar/Desktop/dotnet/dotnet7-react18/Domain/Domain.csproj"
+              "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ucart\\OneDrive\\Documents\\GitHub\\dotnet7-react18-typ\\Domain\\Domain.csproj"
               }
             }
           }
@@ -240,7 +254,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
