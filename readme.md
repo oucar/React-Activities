@@ -8,3 +8,4 @@
 - Domain is the center of everything, and it doesn't have dependency on anything else. (Meanwhile Application layer has dependency on Domain, and API has dependency on both Application and Domain.)
 - Entity framework is an object relational mapper. Provides an abstraction against our database.
 - DbContext (DataContext : DbContext) is a combination ofthe unit of work and repository patterns. --> Code first migration
+- Virtual DOM is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. T
