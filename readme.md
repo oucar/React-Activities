@@ -5,6 +5,7 @@
 
 ---
 ### Notes 
+---
 - Domain is the center of everything, and it doesn't have dependency on anything else. (Meanwhile Application layer has dependency on Domain, and API has dependency on both Application and Domain.)
 - Entity framework is an object relational mapper. Provides an abstraction against our database.
 - DbContext (DataContext : DbContext) is a combination ofthe unit of work and repository patterns. --> Code first migration
@@ -13,3 +14,10 @@
     - Component to View: Any change in component data would get reflected in the view.
     - View to Component: Any change in View would get reflected in the component’s data.
 - In React, **one-way data binding** implies that data changes can flow from the parent component to its children via props, but changes made by the children do not directly affect the parent's state. This approach helps maintain a predictable data flow and simplifies debugging, as it ensures that components only receive data and cannot modify it directly, promoting a more stable application structure.
+
+---
+- **Clean Architecture Pattern**: Dependencies are encapsulated. (Database, or the business logic of the app doesn't need to know about how UI handles them.)
+    - Should be independent from frameworks, independent from the interface (React, Vue etc.), should be testable, independent from the databases (but not from the Entity framework or ORM.)
+- **CQRS**: Command and Query Responsibility Segregation.
+    - Commands and Query must be seperated! Works great with Entity Framework and Linq.
+- **Mediator**: Mediator pattern is used to reduce communication complexity between multiple objects or classes. This pattern provides a mediator class which normally handles all the communications between different classes and supports easy maintenance of the code by loose coupling. Mediator pattern falls under behavioral pattern category.
