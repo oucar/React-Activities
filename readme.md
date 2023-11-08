@@ -19,5 +19,5 @@
 - **Clean Architecture Pattern**: Dependencies are encapsulated. (Database, or the business logic of the app doesn't need to know about how UI handles them.)
     - Should be independent from frameworks, independent from the interface (React, Vue etc.), should be testable, independent from the databases (but not from the Entity framework or ORM.)
 - **CQRS**: Command and Query Responsibility Segregation.
-    - Commands and Query must be seperated! Works great with Entity Framework and Linq.
+    - Commands and Query must be seperated! Works great with Entity Framework.
 - **Mediator**: Mediator pattern is used to reduce communication complexity between multiple objects or classes. This pattern provides a mediator class which normally handles all the communications between different classes and supports easy maintenance of the code by loose coupling. Mediator pattern falls under behavioral pattern category.
