@@ -20,4 +20,8 @@
     - Should be independent from frameworks, independent from the interface (React, Vue etc.), should be testable, independent from the databases (but not from the Entity framework or ORM.)
 - **CQRS**: Command and Query Responsibility Segregation.
     - Commands and Query must be seperated! Works great with Entity Framework.
-- **Mediator**: Mediator pattern is used to reduce communication complexity between multiple objects or classes. This pattern provides a mediator class which normally handles all the communications between different classes and supports easy maintenance of the code by loose coupling. Mediator pattern falls under behavioral pattern category.
+- **Mediator**: Mediator pattern is used to reduce communication complexity between multiple objects or classes. This pattern provides a mediator class which normally handles all the communications between different classes and supports easy maintenance of the code by loose coupling. Mediator pattern falls under behavioral pattern category. The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object.
+    - Single Responsibility Principle. You can extract the communications between various components into a single place, making it easier to comprehend and maintain.
+    - Open/Closed Principle. You can introduce new mediators without having to change the actual components.
+    - Over time a mediator can evolve into a God Object. :(
+      
