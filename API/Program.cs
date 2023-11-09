@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Immutable;
 using Application.Activities;
+using Application.Core;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -26,6 +27,8 @@ builder.Services.AddCors(opt => {
 
 // Registering the mediator and its handlers
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(List.Handler).Assembly));
+
+builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
 var app = builder.Build();
 

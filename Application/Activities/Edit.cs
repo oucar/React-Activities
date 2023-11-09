@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using Domain;
 using MediatR;
 using Persistence;
@@ -16,11 +17,13 @@ namespace Application.Activities
         {
 
             private readonly DataContext _context;
+            private readonly IMapper _mapper;
 
             // inject data context
-            public Handler(DataContext context)
+            public Handler(DataContext context, IMapper mapper)
             {
                 _context = context;
+                _mapper = mapper;
             }
 
             public async Task Handle(Command request, CancellationToken cancellationToken)
@@ -36,7 +39,7 @@ namespace Application.Activities
                 }
 
                 // if request.Activity.Title is NULL, then set it to currentActivity.Title (don't change it)
-                currentActivity.Title = request.Activity.Title ?? currentActivity.Title;
+                _mapper.Map(request.Activity,currentActivity);
 
                 await _context.SaveChangesAsync();
             }
