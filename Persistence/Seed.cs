@@ -11,7 +11,8 @@ namespace Persistence
         // no need to create a new instance --> Static
         public static async Task SeedData(DataContext context)
         {
-            // check if already Activities 
+            // check if Activities exists already  
+            // DEBUG ONLY. WILL NOT GO INTO PROD.
             if (context.Activities.Any()) return;
 
             var activities = new List<Activity>
@@ -22,7 +23,8 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(-2),
                     Description = "Activity 2 months ago",
                     Category = "drinks",
-                    City = "London",
+                    State = "Indiana",
+                    City = "Indianapolis",
                     Venue = "Pub",
                 },
                 new Activity
@@ -31,6 +33,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(-1),
                     Description = "Activity 1 month ago",
                     Category = "culture",
+                    State = "Indiana",
                     City = "Paris",
                     Venue = "Louvre",
                 },
@@ -40,6 +43,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(1),
                     Description = "Activity 1 month in future",
                     Category = "culture",
+                    State = "Indiana",
                     City = "London",
                     Venue = "Natural History Museum",
                 },
@@ -49,6 +53,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(2),
                     Description = "Activity 2 months in future",
                     Category = "music",
+                    State = "Indiana",
                     City = "London",
                     Venue = "O2 Arena",
                 },
@@ -58,6 +63,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(3),
                     Description = "Activity 3 months in future",
                     Category = "drinks",
+                    State = "Indiana",
                     City = "London",
                     Venue = "Another pub",
                 },
@@ -67,6 +73,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(4),
                     Description = "Activity 4 months in future",
                     Category = "drinks",
+                    State = "Indiana",
                     City = "London",
                     Venue = "Yet another pub",
                 },
@@ -76,6 +83,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(5),
                     Description = "Activity 5 months in future",
                     Category = "drinks",
+                    State = "Indiana",
                     City = "London",
                     Venue = "Just another pub",
                 },
@@ -85,6 +93,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(6),
                     Description = "Activity 6 months in future",
                     Category = "music",
+                    State = "Indiana",
                     City = "London",
                     Venue = "Roundhouse Camden",
                 },
@@ -94,6 +103,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(7),
                     Description = "Activity 2 months ago",
                     Category = "travel",
+                    State = "Indiana",
                     City = "London",
                     Venue = "Somewhere on the Thames",
                 },
@@ -103,6 +113,7 @@ namespace Persistence
                     Date = DateTime.UtcNow.AddMonths(8),
                     Description = "Activity 8 months in future",
                     Category = "film",
+                    State = "Indiana",
                     City = "London",
                     Venue = "Cinema",
                 }
