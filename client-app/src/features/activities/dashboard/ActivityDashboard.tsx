@@ -9,9 +9,13 @@ import ActivityForm from "../form/ActivityForm";
 interface Props {
   activities: Activity[];
   selectedActivity: Activity | undefined;
+  editMode: boolean;
+
   // these are functions that we're passing down here
   selectActivity: (id: string) => void;
   cancelSelectActivity: () => void;
+  openForm: (id: string) => void;
+  closeForm: () => void;
 }
 
 // destructing activities object from Props
@@ -20,22 +24,28 @@ export default function ActivityDashboard({
   selectedActivity,
   selectActivity,
   cancelSelectActivity,
+  editMode,
+  openForm,
+  closeForm,
 }: Props) {
   return (
     <Grid>
       {/* Semantic UI has its grid in 16 columns and not 12! */}
       <Grid.Column width="10">
-        <ActivityList activities={activities} selectActivity={selectActivity}/>
+        <ActivityList activities={activities} selectActivity={selectActivity} />
       </Grid.Column>
       <Grid.Column width="6">
         {/* anything to the right of this will be executed as long as it's truthy */}
-        {selectedActivity && (
+        {selectedActivity && !editMode && (
           <ActivityDetails
             activity={selectedActivity}
             cancelSelectActivity={cancelSelectActivity}
+            openForm={openForm}
           />
         )}
-        <ActivityForm />
+        {editMode && (
+          <ActivityForm closeForm={closeForm} activity={selectedActivity} />
+        )}
       </Grid.Column>
     </Grid>
   );
