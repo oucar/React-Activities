@@ -4,6 +4,7 @@ import { Container, List } from "semantic-ui-react";
 import { Activity } from "../models/activity";
 import NavBar from "./NavBar";
 import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
+import { v4 as uuid } from "uuid";
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -33,18 +34,37 @@ function App() {
   }
 
   // optional id string can be passed in as a parameter
-  function handleFormOpen (id?: string) {
+  function handleFormOpen(id?: string) {
     id ? handleSelectActivity(id) : handleCancelSelectActivity();
     setEditMode(true);
   }
 
-  function handleFormClose(){
+  function handleFormClose() {
     setEditMode(false);
+  }
+
+  function handleCreateOrEditActivity(activity: Activity) {
+    // if activity.id exists, then we want to update the activity
+    activity.id
+      ? setActivities([
+          ...activities.filter((x) => x.id !== activity.id),
+          activity,
+        ])
+      : setActivities([...activities, { ...activity, id: uuid() }]);
+
+    // close the edit or create modal after submitting
+    setEditMode(false);
+    setSelectedActivity(activity);
+  }
+
+  function handleDeleteActivity(id: string) {
+    // return anything but the id that was passed in
+    setActivities(activities.filter((x) => x.id !== id));
   }
 
   return (
     <Fragment>
-      <NavBar openForm={handleFormOpen}/>
+      <NavBar openForm={handleFormOpen} />
       <Container style={{ marginTop: "7em" }}>
         <ActivityDashboard
           activities={activities}
@@ -54,6 +74,8 @@ function App() {
           editMode={editMode}
           openForm={handleFormOpen}
           closeForm={handleFormClose}
+          createOrEdit={handleCreateOrEditActivity}
+          deleteActivity={handleDeleteActivity}
         />
       </Container>
     </Fragment>
