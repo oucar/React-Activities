@@ -2,6 +2,7 @@
 - .NET 7.0 (Entity Framework -> Mapping C# into SQL database)
 - Swagger & Postman
 - React 18 w/ Typescript
+- Used MobX for state management
 
 ---
 ### Notes 
