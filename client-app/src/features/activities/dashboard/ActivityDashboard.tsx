@@ -17,6 +17,7 @@ interface Props {
   closeForm: () => void;
   createOrEdit: (activity: Activity) => void;
   deleteActivity: (id: string) => void;
+  isSubmitting: boolean;
 }
 
 // destructing activities object from Props
@@ -30,12 +31,18 @@ export default function ActivityDashboard({
   closeForm,
   createOrEdit,
   deleteActivity,
+  isSubmitting,
 }: Props) {
   return (
     <Grid>
       {/* Semantic UI has its grid in 16 columns and not 12! */}
       <Grid.Column width="10">
-        <ActivityList activities={activities} selectActivity={selectActivity} deleteActivity={deleteActivity}/>
+        <ActivityList
+          activities={activities}
+          selectActivity={selectActivity}
+          deleteActivity={deleteActivity}
+          isSubmitting={isSubmitting}
+        />
       </Grid.Column>
       <Grid.Column width="6">
         {/* anything to the right of this will be executed as long as it's truthy */}
@@ -47,7 +54,12 @@ export default function ActivityDashboard({
           />
         )}
         {editMode && (
-          <ActivityForm closeForm={closeForm} activity={selectedActivity} createOrEdit={createOrEdit}/>
+          <ActivityForm
+            closeForm={closeForm}
+            activity={selectedActivity}
+            createOrEdit={createOrEdit}
+            isSubmitting={isSubmitting}
+          />
         )}
       </Grid.Column>
     </Grid>
