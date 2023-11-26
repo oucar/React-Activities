@@ -1,21 +1,13 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Button, Form, Segment } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
-import ActivityStore from "../../../app/stores/activityStore";
 import { useStore } from "../../../app/stores/store";
+import { observer } from "mobx-react-lite";
 
-interface Props {
-  createOrEdit: (activity: Activity) => void;
-  isSubmitting: boolean;
-}
-
-export default function ActivityForm({
-  createOrEdit,
-  isSubmitting
-}: Props) {
-
-  const {activityStore} = useStore();
-  const {selectedActivity, closeForm} = activityStore;
+// Since Loading is an observable we have in activityStore,
+// The whole component function needs to be an observable.
+export default observer(function ActivityForm() {
+  const { activityStore } = useStore();
+  const { selectedActivity, closeForm, createActivity, updateActivity, loading} = activityStore;
 
   const initialState = selectedActivity ?? {
     id: "",
@@ -31,7 +23,7 @@ export default function ActivityForm({
   const [activity, setActivity] = useState(initialState);
 
   function handleSubmit() {
-    createOrEdit(activity);
+    activity.id ? updateActivity(activity) : createActivity(activity);
   }
 
   function handleInputChange(
@@ -90,7 +82,13 @@ export default function ActivityForm({
           name="venue"
           onChange={handleInputChange}
         />
-        <Button loading={isSubmitting} floated="right" positive type="submit" content="Submit" />
+        <Button
+          loading={loading}
+          floated="right"
+          positive
+          type="submit"
+          content="Submit"
+        />
         <Button
           onClick={closeForm}
           floated="right"
@@ -100,4 +98,4 @@ export default function ActivityForm({
       </Form>
     </Segment>
   );
-}
+});

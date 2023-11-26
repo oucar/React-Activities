@@ -9,7 +9,6 @@ import { observer } from "mobx-react-lite";
 // props we got from App.tsx
 interface Props {
   activities: Activity[];
-  createOrEdit: (activity: Activity) => void;
   deleteActivity: (id: string) => void;
   isSubmitting: boolean;
 }
@@ -17,7 +16,6 @@ interface Props {
 // destructing activities object from Props
 export default observer(function ActivityDashboard({
   activities,
-  createOrEdit,
   deleteActivity,
   isSubmitting,
 }: Props) {
@@ -37,12 +35,7 @@ export default observer(function ActivityDashboard({
       <Grid.Column width="6">
         {/* anything to the right of this will be executed as long as it's truthy */}
         {selectedActivity && !editMode && <ActivityDetails />}
-        {editMode && (
-          <ActivityForm
-            createOrEdit={createOrEdit}
-            isSubmitting={isSubmitting}
-          />
-        )}
+        {editMode && <ActivityForm />}
       </Grid.Column>
     </Grid>
   );
