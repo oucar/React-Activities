@@ -1,22 +1,22 @@
 import { SyntheticEvent, useState } from "react";
 import { Activity } from "../../../app/models/activity";
 import { Button, Item, Label, Segment } from "semantic-ui-react";
+import { useStore } from "../../../app/stores/store";
 
 interface Props {
   activities: Activity[];
-  // from ActivityDashboard.tsx
-  // these are functions that we're passing down here
-  selectActivity: (id: string) => void;
   deleteActivity: (id: string) => void;
   isSubmitting: boolean;
 }
 
 export default function ActivityList({
   activities,
-  selectActivity,
   deleteActivity,
   isSubmitting,
 }: Props) {
+  const { activityStore } = useStore();
+  const { selectActivity } = activityStore;
+
   const [target, setTarget] = useState("");
 
   function handleActivityDelete(

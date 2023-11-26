@@ -5,10 +5,8 @@ import React from "react";
 import { StoreContext, store } from "./app/stores/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    {/* Setting up MobX */}
+    // Setting up MobX
     <StoreContext.Provider value={store}>
       <App />
     </StoreContext.Provider>
-  </React.StrictMode>
 );

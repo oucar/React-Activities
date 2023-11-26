@@ -7,15 +7,14 @@ import { v4 as uuid } from "uuid";
 import agent from "../api/agent";
 import LoadingComponent from "./LoadingComponent";
 import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
 
 function App() {
-
   // destructure the activityStore from the MobX store
   const { activityStore } = useStore();
 
   const [activities, setActivities] = useState<Activity[]>([]);
   const [editMode, setEditMode] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   // has the starting value of null, and can be undefined or an Activity
   // should be updated to a type Activity!
@@ -23,35 +22,12 @@ function App() {
     Activity | undefined
   >(undefined);
 
+  // load activities when the component mounts
   useEffect(() => {
-    agent.Activities.list().then((response) => {
-      let activities: Activity[] = [];
-      response.forEach((activity) => {
-        activity.date = activity.date.split("T")[0];
-        activities.push(activity);
-      });
-      setActivities(activities);
-      setIsLoading(false);
-    });
-  }, []);
-
-  function handleSelectActivity(id: string) {
-    setSelectedActivity(activities.find((x) => x.id === id));
-  }
-
-  function handleCancelSelectActivity() {
-    setSelectedActivity(undefined);
-  }
-
-  // optional id string can be passed in as a parameter
-  function handleFormOpen(id?: string) {
-    id ? handleSelectActivity(id) : handleCancelSelectActivity();
-    setEditMode(true);
-  }
-
-  function handleFormClose() {
-    setEditMode(false);
-  }
+    activityStore.loadActivities();
+    // The effect will only re-run if the dependencies have changed since the last render
+    // Here, the dependency is activityStore. This means the effect will re-run whenever activityStore changes
+  }, [activityStore]);
 
   function handleCreateOrEditActivity(activity: Activity) {
     setIsSubmitting(true);
@@ -89,21 +65,15 @@ function App() {
     });
   }
 
-  if (isLoading) return <LoadingComponent content="Loading app" />;
+  if (activityStore.loadingInitial)
+    return <LoadingComponent content="Loading app" />;
 
   return (
     <Fragment>
-      <NavBar openForm={handleFormOpen} />
+      <NavBar />
       <Container style={{ marginTop: "7em" }}>
-        <h2>{activityStore.title}</h2>
         <ActivityDashboard
-          activities={activities}
-          selectedActivity={selectedActivity}
-          selectActivity={handleSelectActivity}
-          cancelSelectActivity={handleCancelSelectActivity}
-          editMode={editMode}
-          openForm={handleFormOpen}
-          closeForm={handleFormClose}
+          activities={activityStore.activities}
           createOrEdit={handleCreateOrEditActivity}
           deleteActivity={handleDeleteActivity}
           isSubmitting={isSubmitting}
@@ -113,4 +83,7 @@ function App() {
   );
 }
 
-export default App;
+// observer is a higher order component that wraps the App component
+// and makes it an observer of the MobX store
+// also, MobX doesn't support fast refresh
+export default observer(App);
