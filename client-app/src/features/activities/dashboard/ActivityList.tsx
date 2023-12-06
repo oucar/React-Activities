@@ -2,11 +2,13 @@ import { SyntheticEvent, useState } from "react";
 import { Button, Item, Label, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
+import { Link } from "react-router-dom";
 
 // Always make sure that your compoenents are observer of the store
 export default observer(function ActivityList() {
   const { activityStore } = useStore();
-  const { selectActivity, deleteActivity, activitiesByDate, loading } = activityStore;
+  const { deleteActivity, activitiesByDate, loading } =
+    activityStore;
 
   const [target, setTarget] = useState("");
 
@@ -38,7 +40,9 @@ export default observer(function ActivityList() {
                 {/* Doesn't immidieatly emitates clicking the button event  */}
                 {/* And wait for us to actually click it */}
                 <Button
-                  onClick={() => selectActivity(activity.id)}
+                  // as we will navigate away from the page, we can use the button as a link
+                  as={Link}
+                  to={`/activities/${activity.id}`}
                   floated="right"
                   content="View"
                   color="blue"

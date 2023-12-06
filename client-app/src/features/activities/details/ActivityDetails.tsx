@@ -1,11 +1,25 @@
 import { Button, Card, Image } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
+import { observer } from "mobx-react-lite";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
 
-export default function ActivityDetails() {
+export default observer(function ActivityDetails() {
   const { activityStore } = useStore();
-  const { selectedActivity: activity, openForm, cancelSelectedActivity} = activityStore;
+  const {
+    selectedActivity: activity,
+    loadActivity,
+    loadingInitial,
+  } = activityStore;
 
-  if (!activity) return;
+  const { id } = useParams<{ id: string }>();
+
+  useEffect(() => {
+    if (id) loadActivity(id);
+  }, [id, loadActivity]);
+
+  if (loadingInitial || !activity) return <LoadingComponent content={""} />;
 
   return (
     // @ TODO: Add city and state.
@@ -22,13 +36,11 @@ export default function ActivityDetails() {
       <Card.Content extra>
         <Button.Group widths="2">
           <Button
-            onClick={() => openForm(activity.id)}
             basic
             color="blue"
             content="Edit"
           />
           <Button
-            onClick={cancelSelectedActivity}
             basic
             color="grey"
             content="Cancel"
@@ -37,4 +49,4 @@ export default function ActivityDetails() {
       </Card.Content>
     </Card>
   );
-}
+});
