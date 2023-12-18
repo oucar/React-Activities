@@ -1,7 +1,7 @@
 import { Button, Card, Image } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 
@@ -16,6 +16,7 @@ export default observer(function ActivityDetails() {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
+    // check i fthe id is not null
     if (id) loadActivity(id);
   }, [id, loadActivity]);
 
@@ -36,11 +37,15 @@ export default observer(function ActivityDetails() {
       <Card.Content extra>
         <Button.Group widths="2">
           <Button
+            as={Link}
+            to={`/manage/${activity.id}`}
             basic
             color="blue"
             content="Edit"
           />
           <Button
+            as={Link}
+            to='/activities'
             basic
             color="grey"
             content="Cancel"
