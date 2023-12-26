@@ -16,12 +16,34 @@ export default class ActivityStore {
     makeAutoObservable(this);
   }
 
-  // Computed property
+  // Computed properties
   get activitiesByDate() {
     return Array.from(this.activityRegistry.values()).sort(
       (a, b) => Date.parse(a.date) - Date.parse(b.date)
     );
   }
+
+  get groupedActivities() {
+    return Object.entries(
+      // reduce the activitiesByDate array to an object
+      // an iterative method. It runs a "reducer" callback function over all elements in the array, 
+      // in ascending-index order, and accumulates them into a single value
+      this.activitiesByDate.reduce((activities, activity) => {
+        // get the date from the activity
+        const date = activity.date;
+
+        // get the activities for the date
+        activities[date] = activities[date]
+          // if the date exists, add the activity to the array
+          ? [...activities[date], activity]
+          // if the date doesn't exist, create a new array with the activity
+          : [activity];
+
+        return activities;
+      }, {} as { [key: string]: Activity[] })
+    );
+  }
+
 
   // using an array for actions automatically binds the action to the class
   loadActivities = async () => {
