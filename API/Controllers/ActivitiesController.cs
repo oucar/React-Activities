@@ -1,5 +1,4 @@
 ﻿using Domain;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Application;
 using Application.Activities;
@@ -10,47 +9,47 @@ namespace API.Controllers
     {
         // GET api/activities
         [HttpGet]
-        public async Task<ActionResult<List<Activity>>> GetActivities()
+        public async Task<IActionResult> GetActivities()
         {
-            return await Mediator.Send(new List.Query());
+            var result = await Mediator.Send(new List.Query());
+
+            return HandleResult(result);
         }
 
         // GET api/activities/${id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Activity>> GetSingleActivity(Guid id)
+        public async Task<IActionResult> GetSingleActivity(Guid id)
         {
-            var activity = await Mediator.Send(new Details.Query { Id = id });
+            var result = await Mediator.Send(new Details.Query { Id = id });
 
-            if (activity == null) return NotFound();
-
-            return activity;
+            return HandleResult(result);
         }
 
         // POST api/activities/
         [HttpPost]
         public async Task<IActionResult> CreateActivity(Activity activity)
         {
-            await Mediator.Send(new Create.Command { Activity = activity });
+            var result = await Mediator.Send(new Create.Command { Activity = activity });
 
-            return Ok();
+            return HandleResult(result);
         }
 
         // api/activities/${id}
         [HttpPut("{id}")]
         public async Task<IActionResult> EditActivity(Guid id, Activity activity)
         {
-            await Mediator.Send(new Edit.Command { Activity = activity });
+            var result = await Mediator.Send(new Edit.Command { Activity = activity });
 
-            return Ok();
+            return HandleResult(result);
         }
 
         // api/activities/${id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteActivity(Guid id)
         {   
-            await Mediator.Send(new Delete.Command { Id = id });
+            var result = await Mediator.Send(new Delete.Command { Id = id });
         
-            return Ok();
+            return HandleResult(result);
         }
     }
 }

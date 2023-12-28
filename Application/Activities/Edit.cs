@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.Core;
+using AutoMapper;
 using Domain;
 using FluentValidation;
 using MediatR;
@@ -8,7 +9,7 @@ namespace Application.Activities
 {
 	public class Edit
 	{
-        public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
             public Activity Activity { get; set; }
         }
@@ -25,7 +26,7 @@ namespace Application.Activities
 
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
 
             private readonly DataContext _context;
@@ -38,22 +39,20 @@ namespace Application.Activities
                 _mapper = mapper;
             }
 
-            public async Task Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var currentActivity = await _context.Activities.FindAsync(request.Activity.Id);
+                var activity = await _context.Activities.FindAsync(request.Activity.Id);
 
-                // Don't allow users to edit the Id
-                // No Activity can be found with the ID in the request
-                if (currentActivity == null)
-                {
-                    Console.WriteLine("ERROR: No Activity can be found! Are you trying to edit the ID?");
-                    throw new InvalidOperationException("ERROR: No Activity can be found! Are you trying to edit the ID?");
-                }
+                if (activity == null) return null;
 
                 // if request.Activity.Title is NULL, then set it to currentActivity.Title (don't change it)
-                _mapper.Map(request.Activity,currentActivity);
+                _mapper.Map(request.Activity, activity);
 
-                await _context.SaveChangesAsync();
+                var result = await _context.SaveChangesAsync() > 0;
+
+                if (!result) return Result<Unit>.Failure("Failed to update the activity!");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }
