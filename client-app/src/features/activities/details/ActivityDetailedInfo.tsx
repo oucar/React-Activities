@@ -37,9 +37,10 @@ export default observer(function ActivityDetailedInfo({ activity }: Props) {
           </Grid.Column>
           <Grid.Column width={11}>
             <span>
-              {activity.venue}, {activity.city}
+              {activity.venue} - {activity.city}, {activity.state}
             </span>
           </Grid.Column>
+          {/* TODO: ADD a detailed address grid!! */}
         </Grid>
       </Segment>
     </Segment.Group>
