@@ -2,6 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { Activity } from "../models/activity";
 import agent from "../api/agent";
 import { v4 as uuid } from "uuid";
+import { format } from "date-fns";
 
 export default class ActivityStore {
   // can store activities in a map instead of an array
@@ -19,31 +20,22 @@ export default class ActivityStore {
   // Computed properties
   get activitiesByDate() {
     return Array.from(this.activityRegistry.values()).sort(
-      (a, b) => Date.parse(a.date) - Date.parse(b.date)
-    );
+      (a, b) => new Date(a.date!).getTime() - new Date(b.date!).getTime()    );
   }
 
   get groupedActivities() {
     return Object.entries(
       // reduce the activitiesByDate array to an object
-      // an iterative method. It runs a "reducer" callback function over all elements in the array, 
+      // an iterative method. It runs a "reducer" callback function over all elements in the array,
       // in ascending-index order, and accumulates them into a single value
       this.activitiesByDate.reduce((activities, activity) => {
         // get the date from the activity
-        const date = activity.date;
-
-        // get the activities for the date
-        activities[date] = activities[date]
-          // if the date exists, add the activity to the array
-          ? [...activities[date], activity]
-          // if the date doesn't exist, create a new array with the activity
-          : [activity];
-
+        const date = format(activity.date!, "dd MMM yyyy");
+        activities[date] = activities[date] ? [...activities[date], activity] : [activity];
         return activities;
       }, {} as { [key: string]: Activity[] })
     );
   }
-
 
   // using an array for actions automatically binds the action to the class
   loadActivities = async () => {
@@ -51,7 +43,6 @@ export default class ActivityStore {
     try {
       const activities = await agent.Activities.list();
       activities.forEach((activity) => {
-        activity.date = activity.date.split("T")[0];
         this.activityRegistry.set(activity.id, activity);
       });
       this.setLoadingInitial(false);
@@ -92,7 +83,7 @@ export default class ActivityStore {
   };
 
   private setActivity = (activity: Activity) => {
-    activity.date = activity.date.split("T")[0];
+    activity.date = new Date(activity.date!);
     this.activityRegistry.set(activity.id, activity);
   };
 
