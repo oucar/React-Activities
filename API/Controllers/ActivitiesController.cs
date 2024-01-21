@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Application;
 using Application.Activities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -17,6 +18,7 @@ namespace API.Controllers
         }
 
         // GET api/activities/${id}
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSingleActivity(Guid id)
         {
