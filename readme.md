@@ -5,6 +5,7 @@
 - Used MobX for state management
 - Fluent validation
 - MediatR (Mediator pattern)
+- ASPNET Core Identity & JWT Token Authentication with User and SignIn Managers
 ---
 ### Notes 
 ---
