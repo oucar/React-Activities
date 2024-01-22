@@ -18,7 +18,6 @@ namespace API.Controllers
         }
 
         // GET api/activities/${id}
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSingleActivity(Guid id)
         {

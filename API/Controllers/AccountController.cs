@@ -1,14 +1,21 @@
 using API.DTOs;
 using API.Services;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+
+
+
+
     // The reason why Account Controller is seperate than Base API controller is because we don't want
     // People to access Base API Controller unless they're all good based on the results they got from 
     // Account controller.
+    // Allowing anonymous access to this controller - meaning that they don't need to be authenticated
+    [AllowAnonymous]
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
