@@ -20,10 +20,10 @@ namespace API.Extensions
             // Everything related to authentication and authorization is going to be added to the AddIdentityCore method
             services.AddIdentityCore<AppUser>(opt =>
             {
-
-                // Password requirements
+                // Authentication options
                 opt.Password.RequireNonAlphanumeric = false;
-
+                opt.User.RequireUniqueEmail = true;
+                
             }).AddEntityFrameworkStores<DataContext>();
 
             // TODO: Will be fixed later!!

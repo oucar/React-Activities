@@ -1,9 +1,11 @@
+using System.Security.Claims;
 using API.DTOs;
 using API.Services;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -14,8 +16,6 @@ namespace API.Controllers
     // The reason why Account Controller is seperate than Base API controller is because we don't want
     // People to access Base API Controller unless they're all good based on the results they got from 
     // Account controller.
-    // Allowing anonymous access to this controller - meaning that they don't need to be authenticated
-    [AllowAnonymous]
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
@@ -29,6 +29,7 @@ namespace API.Controllers
             _tokenService = tokenService;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
@@ -40,17 +41,67 @@ namespace API.Controllers
 
             if (result)
             {
-                return new UserDto
-                {
-                    DisplayName = user.DisplayName,
-                    Image = null,
-                    Token = _tokenService.CreateToken(user),
-                    Username = user.UserName
-                };
+                return CreateUserObject(user);
+
             }
 
             return Unauthorized();
         }
 
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
+        {
+            // ASPNET Core Identity doesn't have an option for username, so we need to add it manually
+            // Other options are in IdentittyServiceExtensions.cs
+
+            var user = new AppUser
+            {
+                DisplayName = registerDto.DisplayName,
+                Email = registerDto.Email,
+                UserName = registerDto.Username
+            };
+
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
+
+            if (result.Succeeded)
+            {
+                return CreateUserObject(user);
+            }
+
+            // Printing the errors 
+            var errors = result.Errors.Select(e => e.Description);
+            var errorMessage = "ERROR: Problem registering user! \n" + string.Join(" ", errors);
+            return BadRequest(errorMessage);
+
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            // Get the user from the database
+            var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
+
+            // Return the user
+            return CreateUserObject(user);
+
+        }
+
+        // Helper Method: Create a user
+        private UserDto CreateUserObject(AppUser user)
+        {
+            return new UserDto
+            {
+                DisplayName = user.DisplayName,
+                Image = null,
+                Token = _tokenService.CreateToken(user),
+                Username = user.UserName
+            };
+        }
+
+
     }
 }
+
+
