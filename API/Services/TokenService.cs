@@ -8,6 +8,15 @@ namespace API.Services
 {
     public class TokenService
     {
+        private readonly IConfiguration _config;
+
+        public TokenService(IConfiguration config)
+        {
+            _config = config;
+
+        }   
+
+
         public string CreateToken(AppUser user)
         {
             var claims = new List<Claim>{
@@ -17,7 +26,7 @@ namespace API.Services
             };
 
             // SymmetricSecurityKey is used to sign the token
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("9EC15EE9CB3F121F65EDE1FC8473801B75663857975813244F7A8E0ADFBFA4E8"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
 
             // SigningCredentials is used to generate the signature
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
