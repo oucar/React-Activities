@@ -10,9 +10,6 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers
 {
 
-
-
-
     // The reason why Account Controller is seperate than Base API controller is because we don't want
     // People to access Base API Controller unless they're all good based on the results they got from 
     // Account controller.
@@ -54,6 +51,18 @@ namespace API.Controllers
         {
             // ASPNET Core Identity doesn't have an option for username, so we need to add it manually
             // Other options are in IdentittyServiceExtensions.cs
+
+            if (await _userManager.Users.AnyAsync(x => x.Email == registerDto.Email))
+            {
+                ModelState.AddModelError("email", "Email taken");
+                return ValidationProblem(ModelState);
+            }
+
+            if (await _userManager.Users.AnyAsync(x => x.UserName == registerDto.Username))
+            {
+                ModelState.AddModelError("username", "Username taken");
+                return ValidationProblem(ModelState);
+            }
 
             var user = new AppUser
             {
