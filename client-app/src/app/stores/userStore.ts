@@ -23,6 +23,7 @@ export default class UserStore {
 
     // Happens after the token is set, in the next tick
     runInAction(() => (this.user = user));
+    store.modalStore.closeModal();
     router.navigate("/activities");
   };
 
