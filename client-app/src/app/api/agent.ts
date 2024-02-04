@@ -62,6 +62,14 @@ axios.interceptors.response.use(
   }
 );
 
+// Axios interceptors are functions that Axios calls for every request and response.
+// We are using the request interceptor to add the token to the request headers.
+axios.interceptors.request.use(config => {
+  const token = store.commonStore.token;
+  if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const requests = {

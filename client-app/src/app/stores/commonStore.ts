@@ -3,6 +3,7 @@ import { ServerError } from "../models/serverError";
 
 export default class CommonStore {
     error: ServerError | null = null;
+    // assign token to null if it is not in local storage
     token: string | null = localStorage.getItem('jwt');
     appLoaded = false;
     
@@ -26,7 +27,6 @@ export default class CommonStore {
     }
 
     setToken = (token: string | null) => {
-        if (token) localStorage.setItem('jwt', token);
         this.token = token;
     }
 
