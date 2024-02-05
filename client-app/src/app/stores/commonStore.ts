@@ -10,6 +10,9 @@ export default class CommonStore {
     constructor() {
         makeAutoObservable(this);
 
+        // reaction is a MobX function that allows us to react to changes in observables
+        // in this case, we are reacting to changes in the token observable
+        // if the token changes, we will either set it in local storage or remove it
         reaction(
             () => this.token,
             token => {
