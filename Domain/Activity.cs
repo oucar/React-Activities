@@ -14,6 +14,7 @@ namespace Domain
         public string  City { get; set; }   
         public string Venue { get; set; }
         // Each avtivity has a list of attendees
-        public ICollection<ActivityAttendee> Attendees { get; set; }
+        // Initialize the list to avoid null reference exceptions
+        public ICollection<ActivityAttendee> Attendees { get; set; } = new List<ActivityAttendee>();
     }
 }
