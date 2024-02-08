@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Application;
 using Application.Activities;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
+using System;
 
 namespace API.Controllers
 {
