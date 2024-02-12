@@ -15,7 +15,7 @@ namespace Application.Core
 
             // It's saying that the HostUsername property of ActivityDto should be populated with the UserName of the 
             // AppUser of the first Attendee in the Attendees collection of the Activity instance where IsHost is true.
-             // In other words, it's getting the username of the host of the activity.
+            // In other words, it's getting the username of the host of the activity.
             CreateMap<Activity, ActivityDto>()
                 .ForMember(d => d.HostUsername, o => o.MapFrom(s => s.Attendees
                     .FirstOrDefault(x => x.IsHost).AppUser.UserName));
