@@ -35,7 +35,7 @@ namespace Infrastructure.Security
             // AsNoTracking: means we are not tracking the changes of the entity
             var attendee = _dbContext.ActivityAttendees
                 .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.AppUserId == userId && x.ActivityId == activityId)
+                .SingleOrDefaultAsync(x => x.AppUserId == userId && x.ActivityId == activityId)
                 .Result;
 
             if (attendee == null) return Task.CompletedTask;
