@@ -8,7 +8,7 @@ using System;
 
 namespace API.Controllers
 {
-    public class ActivitiesController : ReactivitiesBaseController
+    public class ActivitiesController : BaseAppController
     {
         // GET api/activities
         [HttpGet]
