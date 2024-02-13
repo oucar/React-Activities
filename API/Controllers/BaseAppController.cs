@@ -6,7 +6,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ReactivitiesBaseController : ControllerBase
+    public class BaseAppController : ControllerBase
     {
         private IMediator _mediator;
 
