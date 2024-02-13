@@ -3,11 +3,11 @@ import { Button, Header, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Activity } from "../../../app/models/activity";
+import { ActivityFormValues } from "../../../app/models/activity";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 import CustomTextInput from "../../../app/common/form/CustomTextInput";
 import CustomTextArea from "../../../app/common/form/CustomTextArea";
 import CustomSelectInput from "../../../app/common/form/CustomSelectInput";
@@ -20,7 +20,6 @@ import "react-datepicker/dist/react-datepicker.css";
 export default observer(function ActivityForm() {
   const { activityStore } = useStore();
   const {
-    selectedActivity,
     createActivity,
     updateActivity,
     loading,
@@ -33,16 +32,9 @@ export default observer(function ActivityForm() {
 
   const navigate = useNavigate();
 
-  const [activity, setActivity] = useState<Activity>({
-    id: "",
-    title: "",
-    category: "",
-    description: "",
-    date: null,
-    city: "",
-    state: "",
-    venue: "",
-  });
+  const [activity, setActivity] = useState<ActivityFormValues>(
+    new ActivityFormValues()
+  );
 
   const validationSchema = Yup.object({
     title: Yup.string().required("The activity title is required"),
@@ -54,11 +46,11 @@ export default observer(function ActivityForm() {
     venue: Yup.string().required("The activity venue is required"),
   });
 
-  function handleFormSubmit(activity: Activity) {
+  function handleFormSubmit(activity: ActivityFormValues) {
     if (!activity.id) {
       let newActivity = {
         ...activity,
-        id: uuid()
+        id: uuid(),
       };
       createActivity(newActivity).then(() =>
         navigate(`/activities/${newActivity.id}`)
@@ -72,7 +64,10 @@ export default observer(function ActivityForm() {
 
   // useEffect hook is used to load an activity when the component mounts or when the id or loadActivity function changes.
   useEffect(() => {
-    if (id) loadActivity(id).then((activity) => setActivity(activity!));
+    if (id)
+      loadActivity(id).then((activity) =>
+        setActivity(new ActivityFormValues(activity))
+      );
   }, [id, loadActivity]);
 
   // if the loadingInitial is true, we return a loading component
@@ -90,7 +85,6 @@ export default observer(function ActivityForm() {
         initialValues={activity}
         onSubmit={(values) => handleFormSubmit(values)}
       >
-
         {/* dirty prop is used to check if the form has been changed */}
         {({ handleSubmit, isValid, isSubmitting, dirty }) => (
           <Form className="ui form" onSubmit={handleSubmit} autoComplete="off">
@@ -117,9 +111,10 @@ export default observer(function ActivityForm() {
             <CustomTextInput placeholder="City" name="city" />
             <CustomTextInput placeholder="State" name="state" />
             <CustomTextInput placeholder="Venue" name="venue" />
+            
             <Button
               disabled={isSubmitting || !dirty || !isValid}
-              loading={loading}
+              loading={isSubmitting}
               floated="right"
               positive
               type="submit"
