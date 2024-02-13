@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { Activity } from "../models/activity";
+import { Activity, ActivityFormValues } from "../models/activity";
 import { toast } from "react-toastify";
 import { router } from "../router/Routes";
 import { store } from "../stores/store";
@@ -27,10 +27,12 @@ axios.interceptors.response.use(
       case 400:
         // Invalid Guid
         // It essentialy is a validation error as well
-        if (config.method === "get" && Object.prototype.hasOwnProperty.call(data.errors, "id")) {
+        if (
+          config.method === "get" &&
+          Object.prototype.hasOwnProperty.call(data.errors, "id")
+        ) {
           router.navigate("/not-found");
         }
-
 
         if (data.errors) {
           // this will create an array of arrays for each error
@@ -64,7 +66,7 @@ axios.interceptors.response.use(
 
 // Axios interceptors are functions that Axios calls for every request and response.
 // We are using the request interceptor to add the token to the request headers.
-axios.interceptors.request.use(config => {
+axios.interceptors.request.use((config) => {
   const token = store.commonStore.token;
   if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
   return config;
@@ -86,10 +88,12 @@ const Activities = {
   list: () => requests.get<Activity[]>("/activities"),
   details: (id: string) => requests.get<Activity>(`/activities/${id}`),
   // since we're not getting anything back for create, update, and delete, we can use void.
-  create: (activity: Activity) => axios.post<void>("/activities", activity),
-  update: (activity: Activity) =>
-    axios.put<void>(`/activities/${activity.id}`, activity),
-  delete: (id: string) => axios.delete<void>(`/activities/${id}`),
+  create: (activity: ActivityFormValues) =>
+    requests.post<void>(`/activities`, activity),
+  update: (activity: ActivityFormValues) =>
+    requests.put<void>(`/activities/${activity.id}`, activity),
+  delete: (id: string) => requests.delete<void>(`/activities/${id}`),
+  attend: (id: string) => requests.post<void>(`/activities/${id}/attend`, {}),
 };
 
 const Account = {
@@ -97,12 +101,13 @@ const Account = {
   current: () => requests.get<User>("/account"),
   // getting back an user as response
   login: (user: UserFormValues) => requests.post<User>("/account/login", user),
-  register: (user: UserFormValues) => requests.post<User>("/account/register", user),
-}
+  register: (user: UserFormValues) =>
+    requests.post<User>("/account/register", user),
+};
 
 const agent = {
   Activities,
-  Account
+  Account,
 };
 
 export default agent;
