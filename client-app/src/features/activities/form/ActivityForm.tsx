@@ -19,13 +19,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // The whole component function needs to be an observable.
 export default observer(function ActivityForm() {
   const { activityStore } = useStore();
-  const {
-    createActivity,
-    updateActivity,
-    loading,
-    loadActivity,
-    loadingInitial,
-  } = activityStore;
+  const { createActivity, updateActivity, loadActivity, loadingInitial } = activityStore;
 
   // getting the id from the parameters
   const { id } = useParams<{ id: string }>();
@@ -111,7 +105,7 @@ export default observer(function ActivityForm() {
             <CustomTextInput placeholder="City" name="city" />
             <CustomTextInput placeholder="State" name="state" />
             <CustomTextInput placeholder="Venue" name="venue" />
-            
+
             <Button
               disabled={isSubmitting || !dirty || !isValid}
               loading={isSubmitting}
