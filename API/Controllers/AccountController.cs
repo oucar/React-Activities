@@ -9,9 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-
     // The reason why Account Controller is seperate than Base API controller is because we don't want
-    // People to access Base API Controller unless they're all good based on the results they got from 
+    // People to access Base API Controller unless they're all good based on the results they got from
     // Account controller.
     [ApiController]
     [Route("api/[controller]")]
@@ -30,16 +29,18 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await _userManager.FindByEmailAsync(loginDto.Email);
+            var user = await _userManager.Users
+                .Include(p => p.Photos)
+                .FirstOrDefaultAsync(x => x.Email == loginDto.Email);
 
-            if (user == null) return Unauthorized();
+            if (user == null)
+                return Unauthorized();
 
             var result = await _userManager.CheckPasswordAsync(user, loginDto.Password);
 
             if (result)
             {
                 return CreateUserObject(user);
-
             }
 
             return Unauthorized();
@@ -78,11 +79,10 @@ namespace API.Controllers
                 return CreateUserObject(user);
             }
 
-            // Printing the errors 
+            // Printing the errors
             var errors = result.Errors.Select(e => e.Description);
             var errorMessage = "ERROR: Problem registering user! \n" + string.Join(" ", errors);
             return BadRequest(errorMessage);
-
         }
 
         [Authorize]
@@ -90,11 +90,12 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             // Get the user from the database
-            var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
+            var user = await _userManager.Users
+                .Include(p => p.Photos)
+                .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
 
             // Return the user
             return CreateUserObject(user);
-
         }
 
         // Helper Method: Create a user
@@ -103,14 +104,10 @@ namespace API.Controllers
             return new UserDto
             {
                 DisplayName = user.DisplayName,
-                Image = null,
+                Image = user?.Photos?.FirstOrDefault(x => x.IsMain)?.Url,
                 Token = _tokenService.CreateToken(user),
                 Username = user.UserName
             };
         }
-
-
     }
 }
-
-
