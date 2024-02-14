@@ -169,7 +169,6 @@ export default class ActivityStore {
               (a) => a.username !== user?.username
             );
           this.selectedActivity.isGoing = false;
-          
         } else {
           const attendee = new Profile(user!);
           this.selectedActivity?.attendees?.push(attendee);
@@ -205,5 +204,9 @@ export default class ActivityStore {
     } finally {
       runInAction(() => (this.loading = false));
     }
+  };
+
+  clearSelectedActivity = () => {
+    this.selectedActivity = undefined;
   };
 }
