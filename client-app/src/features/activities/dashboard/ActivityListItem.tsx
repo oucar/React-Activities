@@ -41,26 +41,29 @@ export default function ActivityListItem({ activity }: Props) {
               style={{ marginBottom: 5 }}
               size="tiny"
               circular
-              src="/assets/user.png"
+              src={activity.host?.image || "/assets/user.png"}
             />
             <Item.Content>
               <Item.Header as={Link} to={`/activities/${activity.id}`}>
                 {activity.title}
               </Item.Header>
               <Item.Description>
-                Hosted by {activity.host?.displayName}
+                Hosted by{" "}
+                <Link to={`/profiles/${activity.hostUsername}`}>
+                  {activity.host?.displayName}
+                </Link>
               </Item.Description>
               {activity.isHost && (
                 <Item.Description>
                   <Label basic color="orange">
-                    You are hosting this activity
+                    You are hosting this activity!
                   </Label>
                 </Item.Description>
               )}
               {activity.isGoing && !activity.isHost && (
                 <Item.Description>
                   <Label basic color="green">
-                    You are going to this activity
+                    You are going to this activity!
                   </Label>
                 </Item.Description>
               )}
@@ -71,14 +74,12 @@ export default function ActivityListItem({ activity }: Props) {
       <Segment>
         <span>
           <Icon name="clock" /> {format(activity.date!, "dd MMM yyyy h:mm aa")}
-          <Icon name="marker" /> {activity.venue} - {activity.city},{" "}
-          {activity.state}
+          <Icon name="marker" /> {activity.venue}
         </span>
       </Segment>
       <Segment secondary>
         <ActivityListItemAttendee attendees={activity.attendees!} />
       </Segment>
-      {/* clearing flag clears any of the previous floatings etc */}
       <Segment clearing>
         <span>{activity.description}</span>
         <Button
