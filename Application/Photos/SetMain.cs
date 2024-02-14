@@ -47,7 +47,7 @@ namespace Application.Photos
 
                 if (success) return Result<Unit>.Success(Unit.Value);
 
-                return Result<Unit>.Failure("Problem setting main photo");
+                return Result<Unit>.Failure("Error setting the main photo!");
             }
         }
     }

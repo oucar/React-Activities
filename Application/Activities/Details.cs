@@ -39,6 +39,8 @@ namespace Application.Activities
             {
                 // rather than embedding this logic into controller itself,
                 // it's a better idea to handle it in the handler
+                // ProjectTo is a method provided by AutoMapper that allows us to project our query directly into a DTO.
+
                 var activity = await _context.Activities
                     .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(x => x.Id == request.Id);
