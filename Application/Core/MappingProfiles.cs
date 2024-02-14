@@ -1,4 +1,5 @@
 using Application.Activities;
+using Application.Comments;
 using AutoMapper;
 using Domain;
 
