@@ -7,7 +7,8 @@ namespace Persistence
     // IdentityDbContext<AppUser> is the class that will give us access to the Identity tables in our database
     public class DataContext : IdentityDbContext<AppUser>
     {
-        public DataContext(DbContextOptions options) : base(options)
+        public DataContext(DbContextOptions options)
+            : base(options)
         {
             // Database.EnsureCreated();
         }
@@ -16,6 +17,7 @@ namespace Persistence
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -24,23 +26,35 @@ namespace Persistence
 
             // This will create a composite key for the ActivityAttendee table
             // Composite key is a key that consists of more than one attribute (appUserId and activityId in this case)
-            builder.Entity<ActivityAttendee>(x => x.HasKey(aa => new { aa.AppUserId, aa.ActivityId }));
+            builder.Entity<ActivityAttendee>(
+                x => x.HasKey(aa => new { aa.AppUserId, aa.ActivityId })
+            );
 
             // BELOW ARE THE RELATIONSHIPS BETWEEN THE TABLES - ENTITY FRAMEWORK CORE WILL CREATE THE RELATIONSHIPS IN THE DATABASE
             // WHICH IS MANY TO MANY RELATIONSHIP BETWEEN THE ACTIVITY AND APPUSER TABLES
             // (Many AppUsers can attend many Activities and many Activities can have many AppUsers attending them)
 
             // This will create a relationship between the AppUser and ActivityAttendee tables
-            builder.Entity<ActivityAttendee>()
+            builder
+                .Entity<ActivityAttendee>()
                 .HasOne(u => u.AppUser)
                 .WithMany(a => a.Activities)
                 .HasForeignKey(aa => aa.AppUserId);
 
             // This will create a relationship between the Activity and ActivityAttendee tables
-            builder.Entity<ActivityAttendee>()
+            builder
+                .Entity<ActivityAttendee>()
                 .HasOne(a => a.Activity)
                 .WithMany(u => u.Attendees)
                 .HasForeignKey(aa => aa.ActivityId);
+
+            // If we delete one activity, it would cascade that activity that activity down to comments
+            // Deleted users' comments will keep being displayed
+            builder
+                .Entity<Comment>()
+                .HasOne(a => a.Activity)
+                .WithMany(c => c.Comments)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

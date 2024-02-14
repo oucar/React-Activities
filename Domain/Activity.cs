@@ -16,5 +16,6 @@
         // Each avtivity has a list of attendees
         // Initialize the list to avoid null reference exceptions
         public ICollection<ActivityAttendee> Attendees { get; set; } = new List<ActivityAttendee>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }
