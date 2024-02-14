@@ -6,6 +6,7 @@
 - Fluent validation
 - MediatR (Mediator pattern)
 - ASPNET Core Identity & JWT Token Authentication with User and SignIn Managers
+- SignalR implementation for real-time web functionality
 ---
 ### Notes 
 ---

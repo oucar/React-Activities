@@ -40,6 +40,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapHub<ChatHub>("chat");
+
 
 // Create the database
 // Once we're done with the scope, anything inside will be cleaned from the memory.

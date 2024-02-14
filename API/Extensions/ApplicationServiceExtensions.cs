@@ -50,6 +50,8 @@ namespace API.Extensions
             // Adding the Cloduinary settings to the configuration from appsettings.json
             services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
 
+            services.AddSignalR();
+
             return services;
         }
     }
