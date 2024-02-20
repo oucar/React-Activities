@@ -18,6 +18,14 @@
     - Component to View: Any change in component data would get reflected in the view.
     - View to Component: Any change in View would get reflected in the component’s data.
 - In React, **one-way data binding** implies that data changes can flow from the parent component to its children via props, but changes made by the children do not directly affect the parent's state. This approach helps maintain a predictable data flow and simplifies debugging, as it ensures that components only receive data and cannot modify it directly, promoting a more stable application structure.
+- IQueryable<T> (needed for pagination, filtering, sorting etc in the API)
+    - Query variable stores query commands
+        - IQueryable<T> creates an expression tree.
+    - Execution is deferred until iteration:
+        - ForEach loop
+        - ToList(), ToArray(), ToDictionary()
+        - Singleton queries (Count, Average, First, Last, Max, Min, Sum)
+
 
 ---
 - **Clean Architecture Pattern**: Dependencies are encapsulated. (Database, or the business logic of the app doesn't need to know about how UI handles them.)
