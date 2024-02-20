@@ -12,10 +12,13 @@ namespace Application.Activities
 {
     public class List
     {
-        // Fetch Data
-        public class Query : IRequest<Result<List<ActivityDto>>> { }
+        // Fetch Data (paging, filtering, sorting etc.)
+        public class Query : IRequest<Result<PagedList<ActivityDto>>>
+        {
+            public ActivityParams Params { get; set; }
+        }
 
-        public class Handler : IRequestHandler<Query, Result<List<ActivityDto>>>
+        public class Handler : IRequestHandler<Query, Result<PagedList<ActivityDto>>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -33,18 +36,42 @@ namespace Application.Activities
 
             // Cancellation Token is what we get from the user when he's no longer
             // Interested in the request he made (Exiting from the app etc)
-            public async Task<Result<List<ActivityDto>>> Handle(
+            public async Task<Result<PagedList<ActivityDto>>> Handle(
                 Query request,
                 CancellationToken cancellationToken
             )
             {
                 // ProjectTo is a method provided by AutoMapper that allows us to project our query directly into a DTO.
+                var query = _context.Activities
+                    .Where(x => x.Date >= request.Params.StartDate)
+                    .OrderBy(d => d.Date)
+                    .ProjectTo<ActivityDto>(
+                        _mapper.ConfigurationProvider,
+                        new { currentUsername = _userAccessor.GetUsername() }
+                    )
+                    // defer the execution of the query until we call ToListAsync
+                    .AsQueryable();
 
-                var activities = await _context.Activities
-                    .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider, new{currentUsername = _userAccessor.GetUsername()})
-                    .ToListAsync();
+                Console.WriteLine("ERROR\n\n\n\n\n\n");
+                if (request.Params.IsGoing && !request.Params.IsHost)
+                {
+                    query = query.Where(
+                        x => x.Attendees.Any(a => a.Username == _userAccessor.GetUsername())
+                    );
+                }
 
-                return Result<List<ActivityDto>>.Success(activities);
+                if (request.Params.IsHost && !request.Params.IsGoing)
+                {
+                    query = query.Where(x => x.HostUsername == _userAccessor.GetUsername());
+                }
+
+                return Result<PagedList<ActivityDto>>.Success(
+                    await PagedList<ActivityDto>.CreateAsync(
+                        query,
+                        request.Params.PageNumber,
+                        request.Params.PageSize
+                    )
+                );
             }
         }
     }

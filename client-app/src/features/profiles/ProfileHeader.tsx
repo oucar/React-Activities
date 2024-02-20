@@ -6,8 +6,7 @@ import {
   Header,
   Statistic,
   Divider,
-  Reveal,
-  Button,
+
 } from "semantic-ui-react";
 import { Profile } from "../../app/models/profile";
 import FollowButton from "./FollowButton";

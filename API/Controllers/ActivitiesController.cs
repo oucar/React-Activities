@@ -11,12 +11,13 @@ namespace API.Controllers
     public class ActivitiesController : BaseAppController
     {
         // GET api/activities
+        // [FromQuery] is used to bind the query string parameters to the method parameters
         [HttpGet]
-        public async Task<IActionResult> GetActivities()
+        public async Task<IActionResult> GetActivities([FromQuery] ActivityParams param)
         {
-            var result = await Mediator.Send(new List.Query());
+            var result = await Mediator.Send(new List.Query { Params = param });
 
-            return HandleResult(result);
+            return HandlePagedResult(result);
         }
 
         // GET api/activities/${id}
