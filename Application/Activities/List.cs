@@ -52,7 +52,6 @@ namespace Application.Activities
                     // defer the execution of the query until we call ToListAsync
                     .AsQueryable();
 
-                Console.WriteLine("ERROR\n\n\n\n\n\n");
                 if (request.Params.IsGoing && !request.Params.IsHost)
                 {
                     query = query.Where(
@@ -63,6 +62,11 @@ namespace Application.Activities
                 if (request.Params.IsHost && !request.Params.IsGoing)
                 {
                     query = query.Where(x => x.HostUsername == _userAccessor.GetUsername());
+                }
+
+                if (request.Params.Category != null)
+                {
+                    query = query.Where(x => x.Category == request.Params.Category);
                 }
 
                 return Result<PagedList<ActivityDto>>.Success(

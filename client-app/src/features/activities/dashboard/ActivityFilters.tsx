@@ -2,11 +2,15 @@ import { observer } from "mobx-react-lite";
 import Calendar from "react-calendar";
 import { Header, Menu } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
+import { Category } from "../../../app/common/enums/categories";
 
 export default observer(function ActivityFilters() {
   const {
     activityStore: { predicate, setPredicate },
   } = useStore();
+
+  const categories = Object.values(Category);
+
   return (
     <>
       {/* https://react.semantic-ui.com/collections/menu/ */}
@@ -27,6 +31,15 @@ export default observer(function ActivityFilters() {
           active={predicate.has("isHost")}
           onClick={() => setPredicate("isHost", "true")}
         />
+        {/* Iterating thru the categories */}
+        {categories.map((category) => (
+        <Menu.Item
+          key={category}
+          content={category.charAt(0).toUpperCase() + category.slice(1)}
+          active={predicate.has(category)}
+          onClick={() => setPredicate(category, "true")}
+        />
+      ))}
       </Menu>
       <Header />
       <Calendar
