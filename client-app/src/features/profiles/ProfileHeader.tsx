@@ -6,7 +6,6 @@ import {
   Header,
   Statistic,
   Divider,
-
 } from "semantic-ui-react";
 import { Profile } from "../../app/models/profile";
 import FollowButton from "./FollowButton";
@@ -19,7 +18,7 @@ export default observer(function ProfileHeader({ profile }: Props) {
   return (
     <Segment>
       <Grid>
-      <Grid.Column width={12}>
+        <Grid.Column width={12}>
           <Item.Group>
             <Item>
               <Item.Image
