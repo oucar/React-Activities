@@ -1,8 +1,9 @@
-import { observer } from "mobx-react-lite";
-import Calendar from "react-calendar";
-import { Header, Menu } from "semantic-ui-react";
-import { useStore } from "../../../app/stores/store";
-import { Category } from "../../../app/common/enums/categories";
+import React from 'react';
+import { observer } from 'mobx-react-lite';
+import Calendar from 'react-calendar';
+import { Header, Menu, Icon } from 'semantic-ui-react';
+import { useStore } from '../../../app/stores/store';
+import { Category, CategoryIcons } from '../../../app/common/enums/categories';
 
 export default observer(function ActivityFilters() {
   const {
@@ -10,14 +11,14 @@ export default observer(function ActivityFilters() {
   } = useStore();
 
   const categories = Object.values(Category);
+  const categoryIconKeys = Object.keys(CategoryIcons) as (keyof typeof CategoryIcons)[];
 
   return (
     <>
-      {/* https://react.semantic-ui.com/collections/menu/ */}
       <Menu vertical size="large" style={{ width: "100%", marginTop: 25 }}>
         <Header icon="filter" attached color="teal" content="Filters" />
         <Menu.Item
-          content="All Activites"
+          content="All Activities"
           active={predicate.has("all")}
           onClick={() => setPredicate("all", "true")}
         />
@@ -31,20 +32,30 @@ export default observer(function ActivityFilters() {
           active={predicate.has("isHost")}
           onClick={() => setPredicate("isHost", "true")}
         />
-        {/* Iterating thru the categories */}
-        {categories.map((category) => (
-        <Menu.Item
-          key={category}
-          content={category.charAt(0).toUpperCase() + category.slice(1)}
-          active={predicate.has(category)}
-          onClick={() => setPredicate(category, "true")}
-        />
-      ))}
       </Menu>
+
+      {/* Separate Menu for categories */}
+      <Menu vertical size="large" style={{ width: "100%", marginTop: 25 }}>
+        <Header icon="filter" attached color="teal" content="Categories" />
+
+        {/* Iterating through the category icons */}
+        {categoryIconKeys.map((categoryIconKey) => (
+          <Menu.Item
+            key={categoryIconKey}
+            content={
+              <>
+                <Icon name={CategoryIcons[categoryIconKey]} style={{opacity: "30%"}}/>
+                {categoryIconKey.charAt(0).toUpperCase() + categoryIconKey.slice(1)}
+              </>
+            }
+            active={predicate.has(categoryIconKey)}
+            onClick={() => setPredicate(categoryIconKey, "true")}
+          />
+        ))}
+      </Menu>
+
       <Header />
-      <Calendar
-        onChange={(date: any) => setPredicate("startDate", date as Date)}
-      />
+      <Calendar onChange={(date: any) => setPredicate("startDate", date as Date)} />
     </>
   );
 });
