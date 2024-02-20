@@ -5,6 +5,7 @@ import { store } from "./store";
 import { Profile } from "../models/profile";
 import { format } from "date-fns";
 import { Pagination, PagingParams } from "../models/pagination";
+import { Category } from "../common/enums/categories";
 
 export default class ActivityStore {
   // can store activities in a map instead of an array
@@ -81,6 +82,15 @@ export default class ActivityStore {
       case "startDate":
         this.predicate.delete("startDate");
         this.predicate.set("startDate", value);
+        break;
+      case Category.Drinks:
+      case Category.Culture:
+      case Category.Film:
+      case Category.Food:
+      case Category.Music:
+      case Category.Travel:
+        resetPredicate();
+        this.predicate.set("category", predicate);
         break;
     }
   };
