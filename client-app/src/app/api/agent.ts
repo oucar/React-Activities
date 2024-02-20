@@ -7,8 +7,9 @@ import { User, UserFormValues } from "../models/user";
 import { PaginatedResult } from "../models/pagination";
 import { Photo, Profile, UserActivity } from "../models/profile";
 
-// DEBUG ONLY - REMOVE BEFORE PRODUCTION
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+console.log(import.meta.env.VITE_API_URL);
+
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
     setTimeout(resolve, delay);
@@ -17,7 +18,10 @@ const sleep = (delay: number) => {
 
 axios.interceptors.response.use(
   async (response) => {
-    await sleep(1000);
+    if (import.meta.env.MODE === "development") {
+      // simulate waiting for 1 second before returning the response in dev
+      await sleep(1000);
+    }
     const pagination = response.headers["pagination"];
     if (pagination) {
       response.data = new PaginatedResult(
