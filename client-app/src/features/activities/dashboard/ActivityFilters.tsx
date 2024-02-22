@@ -1,16 +1,14 @@
-import React from 'react';
 import { observer } from 'mobx-react-lite';
 import Calendar from 'react-calendar';
 import { Header, Menu, Icon } from 'semantic-ui-react';
 import { useStore } from '../../../app/stores/store';
-import { Category, CategoryIcons } from '../../../app/common/enums/categories';
+import { CategoryIcons } from '../../../app/common/enums/categories';
 
 export default observer(function ActivityFilters() {
   const {
     activityStore: { predicate, setPredicate },
   } = useStore();
 
-  const categories = Object.values(Category);
   const categoryIconKeys = Object.keys(CategoryIcons) as (keyof typeof CategoryIcons)[];
 
   return (
