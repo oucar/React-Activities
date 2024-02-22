@@ -1,8 +1,6 @@
-import React, { SyntheticEvent, useState } from "react";
 import { Button, Icon, Item, Label, Segment } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
 import { Link } from "react-router-dom";
-import { useStore } from "../../../app/stores/store";
 import { format } from "date-fns";
 import ActivityListItemAttendee from "./ActivityListItemAttendee";
 
@@ -11,19 +9,7 @@ interface Props {
 }
 
 export default function ActivityListItem({ activity }: Props) {
-  const { activityStore } = useStore();
-  const { deleteActivity, loading } = activityStore;
 
-  const [target, setTarget] = useState("");
-
-  function handleActivityDelete(
-    // SyntheticEvent is a generic type (better than any in this situation as it provides more type safety)
-    event: SyntheticEvent<HTMLButtonElement>,
-    id: string
-  ) {
-    setTarget(event.currentTarget.name);
-    deleteActivity(id);
-  }
   return (
     <Segment.Group>
       <Segment>

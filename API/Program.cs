@@ -31,17 +31,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
 app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 
 app.UseAuthorization();
 
+// Will look for index.html in the API/wwwroot folder
+app.UseDefaultFiles();
+
+app.UseStaticFiles();
+
 app.MapControllers();
 
 app.MapHub<ChatHub>("chat");
+
+app.MapFallbackToController("Index", "Fallback");
 
 
 // Create the database
