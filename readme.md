@@ -1,5 +1,6 @@
 ### Tech Stack:
 - .NET 7.0 (Entity Framework -> Mapping C# into SQL database)
+- Postgres for production database
 - Swagger & Postman
 - React 18 w/ Typescript
 - Used MobX for state management
