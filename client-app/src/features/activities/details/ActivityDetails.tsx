@@ -20,7 +20,6 @@ export default observer(function ActivityDetails() {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    // check i fthe id is not null
     if (id) loadActivity(id);
   }, [id, loadActivity]);
 

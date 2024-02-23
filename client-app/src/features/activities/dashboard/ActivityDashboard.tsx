@@ -15,16 +15,6 @@ export default observer(function ActivityDashboard() {
   const { loadActivities, setPagingParams, pagination } = activityStore;
   const [loadingNext, setLoadingNext] = useState(false);
 
-  // DEBUG: WILL BE REPLACED WITH PAGINATION
-  // // load activities when the component mounts
-  // useEffect(() => {
-  //   if (activityRegistry.size <= 1) {
-  //     loadActivities();
-  //   }
-  //   // The effect will only re-run if the dependencies have changed since the last render
-  //   // Here, the dependencies are loadActivities and the size of activityRegistry.
-  //   // This means the effect will re-run whenever either of them changes.
-  // }, [loadActivities, activityRegistry.size]);
   function handleGetNext() {
     setLoadingNext(true);
     setPagingParams(new PagingParams(pagination!.currentPage + 1));
