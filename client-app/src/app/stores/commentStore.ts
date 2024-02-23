@@ -21,7 +21,7 @@ export default class CommentStore {
                 .configureLogging(LogLevel.Information)
                 .build();
 
-            this.hubConnection.start().catch(error => console.log('Error establishing connection: ', error));
+            this.hubConnection.start().catch(error => console.log('Error establishing SignalR connection: ', error));
 
             this.hubConnection.on('LoadComments', (comments: ChatComment[]) => {
                 runInAction(() => {
