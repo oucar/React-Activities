@@ -13,6 +13,8 @@
 ## How to Run
 - Run `npm run build` in the `/client-app` directory
 - Run `dotnet run` in the `/API` directory
+- You will also need appsettings.json and/or appsettings.Development.json files for the API to run that I removed from the Git repository for security reasons after I am done with the project. [Click here to view the commit](https://github.com/oucar/React-Activities/commit/1d82404754dc642ff494b37b2e3c5e2a4cb3c8a7)
+,and use the `appsettings.json` and `appsettings.Development.json` files as templates to create your own. I changed my own API keys and secrets after I was done with the project, so you will need to get your own API keys and secrets for the app to work.
 
 ---
 
