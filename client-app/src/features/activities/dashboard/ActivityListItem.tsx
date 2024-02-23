@@ -3,6 +3,7 @@ import { Activity } from "../../../app/models/activity";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import ActivityListItemAttendee from "./ActivityListItemAttendee";
+import { theme } from "../../../app/common/colors/theme";
 
 interface Props {
   activity: Activity;
@@ -73,9 +74,10 @@ export default function ActivityListItem({ activity }: Props) {
         <Button
           as={Link}
           to={`/activities/${activity.id}`}
-          color="teal"
+          // color="teal"
           floated="right"
           content="View"
+          style={{ backgroundColor: theme.colors.secondary }}
         />
       </Segment>
     </Segment.Group>
