@@ -1,9 +1,9 @@
 import { Button, Container, Menu, Image, Dropdown } from "semantic-ui-react";
 import { Link, NavLink } from "react-router-dom";
 import "./styles.css";
-import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
-import { theme } from "../../app/common/colors/theme";
+import { useStore } from "@src/app/stores/store";
+import { theme } from "@src/app/common/colors/theme";
 
 export default observer(function Navbar() {
   const { userStore } = useStore();

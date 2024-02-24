@@ -1,9 +1,9 @@
 import { Button, Icon, Item, Label, Segment } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import ActivityListItemAttendee from "./ActivityListItemAttendee";
-import { theme } from "../../../app/common/colors/theme";
+import { theme } from "@src/app/common/colors/theme";
+import { Activity } from "@src/app/models/activity";
 
 interface Props {
   activity: Activity;

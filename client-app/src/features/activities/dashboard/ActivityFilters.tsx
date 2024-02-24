@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import Calendar from 'react-calendar';
 import { Header, Menu, Icon } from 'semantic-ui-react';
-import { useStore } from '../../../app/stores/store';
-import { CategoryIcons } from '../../../app/common/enums/categories';
-import { theme } from "../../../app/common/colors/theme";
+import { useStore } from '@src/app/stores/store';
+import { CategoryIcons } from '@src/app/common/enums/categories';
+import { theme } from "@src/app/common/colors/theme";
 
 export default observer(function ActivityFilters() {
   const {

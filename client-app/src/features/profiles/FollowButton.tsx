@@ -1,9 +1,9 @@
 import { SyntheticEvent } from 'react';
 import {observer} from "mobx-react-lite";
 import {Button, Reveal} from "semantic-ui-react";
-import { useStore } from '../../app/stores/store';
-import { Profile } from '../../app/models/profile';
-import { theme } from "../../app/common/colors/theme";
+import { useStore } from '@src/app/stores/store';
+import { Profile } from '@src/app/models/profile';
+import { theme } from "@src/app/common/colors/theme";
 
 interface Props {
     profile: Profile;
