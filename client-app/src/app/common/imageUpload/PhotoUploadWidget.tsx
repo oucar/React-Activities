@@ -3,6 +3,7 @@ import { Button, Grid, Header } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import PhotoUploadWidgetDropzone from './PhotoWidgetDropzone';
 import PhotoWidgetCropper from './PhotoWidgetCropper';
+import { theme } from "../../../app/common/colors/theme";
 
 interface Props {
     loading: boolean;
@@ -30,12 +31,12 @@ export default observer(function PhotoUploadWidget({loading, uploadPhoto}: Props
             <Grid>
                 <Grid.Row />
                 <Grid.Column width={4}>
-                    <Header color='teal' sub content='Step 1 - Add Photo' />
+                    <Header sub content='Step 1 - Add Photo' style={{color: theme.colors.secondary}} />
                     <PhotoUploadWidgetDropzone setFiles={setFiles} />
                 </Grid.Column>
                 <Grid.Column width={1} />
                 <Grid.Column width={4}>
-                    <Header sub color='teal' content='Step 2 - Resize image' />
+                    <Header sub content='Step 2 - Resize image' style={{color: theme.colors.secondary}} />
                     {files && files.length > 0 &&
                         <PhotoWidgetCropper setCropper={setCropper} imagePreview={files[0].preview} />
                     }
@@ -43,7 +44,7 @@ export default observer(function PhotoUploadWidget({loading, uploadPhoto}: Props
                 </Grid.Column>
                 <Grid.Column width={1} />
                 <Grid.Column width={4}>
-                    <Header sub color='teal' content='Step 3 - Preview & Upload' />
+                    <Header sub content='Step 3 - Preview & Upload' style={{color: theme.colors.secondary}} />
                     <div className="img-preview" style={{ minHeight: 200, overflow: 'hidden' }} />
                     <Button.Group widths={2}>
                         <Button loading={loading} onClick={onCrop} positive icon='check' />

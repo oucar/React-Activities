@@ -3,6 +3,7 @@ import Calendar from 'react-calendar';
 import { Header, Menu, Icon } from 'semantic-ui-react';
 import { useStore } from '../../../app/stores/store';
 import { CategoryIcons } from '../../../app/common/enums/categories';
+import { theme } from "../../../app/common/colors/theme";
 
 export default observer(function ActivityFilters() {
   const {
@@ -14,7 +15,7 @@ export default observer(function ActivityFilters() {
   return (
     <>
       <Menu vertical size="large" style={{ width: "100%", marginTop: 25 }}>
-        <Header icon="filter" attached color="teal" content="Filters" />
+        <Header icon="filter" attached content="Filters" style={{ color: theme.colors.primary }} />
         <Menu.Item
           content="All Activities"
           active={predicate.has("all")}
@@ -34,7 +35,7 @@ export default observer(function ActivityFilters() {
 
       {/* Separate Menu for categories */}
       <Menu vertical size="large" style={{ width: "100%", marginTop: 25 }}>
-        <Header icon="filter" attached color="teal" content="Categories" />
+        <Header icon="filter" attached content="Categories" style={{ color: theme.colors.primary }} />
 
         {/* Iterating through the category icons */}
         {categoryIconKeys.map((categoryIconKey) => (

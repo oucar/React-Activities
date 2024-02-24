@@ -2,6 +2,7 @@ import { Segment, List, Label, Item, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Activity } from "../../../app/models/activity";
+import { theme } from "../../../app/common/colors/theme";
 
 interface Props {
   activity: Activity;
@@ -16,11 +17,10 @@ export default observer(function ActivityDetailedSidebar({
     <>
       <Segment
         textAlign="center"
-        style={{ border: "none" }}
+        style={{ border: "none", backgroundColor: theme.colors.primary, color: "white"}}
         attached="top"
         secondary
         inverted
-        color="teal"
       >
         {attendees.length} {attendees.length === 1 ? "Person" : "People"} going
       </Segment>

@@ -14,12 +14,14 @@ import CustomSelectInput from "../../../app/common/form/CustomSelectInput";
 import { categoryOptions } from "../../../app/common/options/categoryOptions";
 import CustomDateInput from "../../../app/common/form/CustomDateInput";
 import "react-datepicker/dist/react-datepicker.css";
+import { theme } from "../../../app/common/colors/theme";
 
 // Since Loading is an observable we have in activityStore,
 // The whole component function needs to be an observable.
 export default observer(function ActivityForm() {
   const { activityStore } = useStore();
-  const { createActivity, updateActivity, loadActivity, loadingInitial } = activityStore;
+  const { createActivity, updateActivity, loadActivity, loadingInitial } =
+    activityStore;
 
   // getting the id from the parameters
   const { id } = useParams<{ id: string }>();
@@ -71,7 +73,11 @@ export default observer(function ActivityForm() {
     // the clearing attribute on a Segment component is used to automatically
     //  clear floated content within the segment.
     <Segment clearing>
-      <Header content="Activity Details" sub color="teal" />
+      <Header
+        content="Activity Details"
+        sub
+        style={{ color: theme.colors.primary }}
+      />
       <Formik
         // Enabling reinitialization will reset the form to the initial values when the enableReinitialize prop is changed.
         enableReinitialize
@@ -101,7 +107,11 @@ export default observer(function ActivityForm() {
               timeCaption="time"
               dateFormat={"MMMM d yyyy h:mm aa"}
             />
-            <Header content="Location Details" sub color="teal" />
+            <Header
+              content="Location Details"
+              sub
+              style={{ color: theme.colors.primary }}
+            />
             <CustomTextInput placeholder="City" name="city" />
             <CustomTextInput placeholder="State" name="state" />
             <CustomTextInput placeholder="Venue" name="venue" />
@@ -113,6 +123,7 @@ export default observer(function ActivityForm() {
               positive
               type="submit"
               content="Submit"
+              style={{ backgroundColor: theme.colors.positiveGreen }}
             />
             <Button
               as={Link}

@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Profile } from "../../../app/models/profile";
 import { Link } from "react-router-dom";
 import ProfileCard from "../../profiles/ProfileCard";
+import { theme } from "../../../app/common/colors/theme";
 
 interface Props {
   attendees: Profile[];
@@ -13,7 +14,7 @@ export default observer(function ActivityListItemAttendee({
   attendees,
 }: Props) {
   const styles = {
-    borderColor: "skyblue",
+    borderColor: theme.colors.positiveGreen,
     borderWidth: 2,
   };
   return (

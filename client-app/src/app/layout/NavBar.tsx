@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./styles.css";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
+import { theme } from "../../app/common/colors/theme";
 
 export default observer(function Navbar() {
   const { userStore } = useStore();
@@ -27,6 +28,7 @@ export default observer(function Navbar() {
             to="/createActivity"
             positive
             content="Create Activity"
+            style={{ backgroundColor: theme.colors.positiveGreen }}
           />
         </Menu.Item>
         <Menu.Item position="right">

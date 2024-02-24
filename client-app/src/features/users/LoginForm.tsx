@@ -3,6 +3,7 @@ import CustomTextInput from "../../app/common/form/CustomTextInput";
 import { Button, Header, Label } from "semantic-ui-react";
 import { useStore } from "../../app/stores/store";
 import { observer } from "mobx-react-lite";
+import { theme } from "../../app/common/colors/theme";
 
 // When using store - always make the component an observer
 export default observer(function LoginForm() {
@@ -22,8 +23,8 @@ export default observer(function LoginForm() {
           <Header
             as="h2"
             content="Login to Reactivities"
-            color="teal"
             textAlign="center"
+            style={{ color: theme.colors.primary }}
           />
           <CustomTextInput name="email" placeholder="Email" />
           <CustomTextInput
@@ -48,6 +49,7 @@ export default observer(function LoginForm() {
             content="Login"
             type="submit"
             fluid
+            style={{ backgroundColor: theme.colors.positiveGreen }}
           />
         </Form>
       )}
