@@ -48,7 +48,7 @@ export default function ActivityListItem({ activity }: Props) {
               )}
               {activity.isGoing && !activity.isHost && (
                 <Item.Description>
-                  <Label basic color="green">
+                  <Label basic style={{ color: theme.colors.positiveGreen }}>
                     You are going to this activity!
                   </Label>
                 </Item.Description>
@@ -74,9 +74,9 @@ export default function ActivityListItem({ activity }: Props) {
         <Button
           as={Link}
           to={`/activities/${activity.id}`}
-          // color="teal"
           floated="right"
           content="View"
+          positive
           style={{ backgroundColor: theme.colors.secondary }}
         />
       </Segment>

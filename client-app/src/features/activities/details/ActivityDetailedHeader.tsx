@@ -4,6 +4,7 @@ import { Activity } from "../../../app/models/activity";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import { useStore } from "../../../app/stores/store";
+import { theme } from "../../../app/common/colors/theme";
 
 // dimming the activity image
 const activityImageStyle = {
@@ -103,7 +104,8 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
             disabled={activity.isCancelled}
             onClick={updateAttendance}
             loading={loading}
-            color="teal"
+            positive
+            style={{ backgroundColor: theme.colors.positiveGreen }}
           >
             Join Activity
           </Button>

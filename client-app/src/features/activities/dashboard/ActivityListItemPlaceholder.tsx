@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Segment, Button, Placeholder } from "semantic-ui-react";
+import { theme } from "../../../app/common/colors/theme";
 
 export default function ActivityListItemPlaceholder() {
   return (
@@ -25,7 +26,7 @@ export default function ActivityListItemPlaceholder() {
           </Segment>
           <Segment secondary style={{ minHeight: 70 }} />
           <Segment clearing>
-            <Button disabled color="blue" floated="right" content="View" />
+            <Button disabled floated="right" content="View" positive style={{ backgroundColor: theme.colors.positiveGreen }}/>
           </Segment>
         </Segment.Group>
       </Placeholder>

@@ -4,7 +4,6 @@ import { useStore } from "../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import LoginForm from "../users/LoginForm";
 import RegisterForm from "../users/RegisterForm";
-import { Profile } from "../../app/models/profile";
 
 export default observer(function HomePage() {
   // after adding the store - always make sure to add the store to the observer!!

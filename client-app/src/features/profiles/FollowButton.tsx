@@ -3,6 +3,7 @@ import {observer} from "mobx-react-lite";
 import {Button, Reveal} from "semantic-ui-react";
 import { useStore } from '../../app/stores/store';
 import { Profile } from '../../app/models/profile';
+import { theme } from "../../app/common/colors/theme";
 
 interface Props {
     profile: Profile;
@@ -26,8 +27,8 @@ export default observer(function FollowButton({profile}: Props) {
             <Reveal.Content visible style={{ width: '100%' }}>
                 <Button
                     fluid
-                    color='teal'
                     content={profile.following ? 'Following' : 'Not Following'}
+                    style={{ backgroundColor: theme.colors.secondary }}
                 />
             </Reveal.Content>
             <Reveal.Content hidden>

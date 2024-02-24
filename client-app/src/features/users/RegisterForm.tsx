@@ -5,6 +5,7 @@ import { useStore } from "../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import * as Yup from "yup";
 import ValidationError from "../errors/ValidationError";
+import { theme } from "../../app/common/colors/theme";
 
 // When using store - always make the component an observer
 export default observer(function RegisterForm() {
@@ -38,8 +39,8 @@ export default observer(function RegisterForm() {
           <Header
             as="h2"
             content="Register to Reactivities"
-            color="teal"
             textAlign="center"
+            style={{ color: theme.colors.primary }}
           />
           <CustomTextInput name="displayName" placeholder="Display name" />
           <CustomTextInput name="username" placeholder="Username" />
@@ -64,6 +65,7 @@ export default observer(function RegisterForm() {
             content="Register"
             type="submit"
             fluid
+            style={{ backgroundColor: theme.colors.positiveGreen }}
           />
         </Form>
       )}

@@ -6,6 +6,7 @@ import { Segment, Header, Comment, Loader } from 'semantic-ui-react'
 import { useStore } from '../../../app/stores/store';
 import * as Yup from 'yup';
 import { formatDistanceToNow } from 'date-fns';
+import { theme } from "../../../app/common/colors/theme";
 
 interface Props {
     activityId: string;
@@ -29,8 +30,7 @@ export default observer(function ActivityDetailedChat({ activityId }: Props) {
                 textAlign='center'
                 attached='top'
                 inverted
-                color='teal'
-                style={{ border: 'none' }}
+                style={{ border: 'none', backgroundColor: theme.colors.secondary }}
             >
                 <Header>Chat about this event</Header>
             </Segment>
