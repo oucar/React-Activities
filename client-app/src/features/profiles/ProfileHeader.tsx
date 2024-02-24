@@ -7,8 +7,8 @@ import {
   Statistic,
   Divider,
 } from "semantic-ui-react";
-import { Profile } from "../../app/models/profile";
 import FollowButton from "./FollowButton";
+import { Profile } from "@src/app/models/profile";
 
 interface Props {
   profile: Profile;

@@ -1,9 +1,9 @@
 import { Grid } from "semantic-ui-react";
-import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import LoadingComponent from "../../../app/layout/LoadingComponent";
+import { useStore } from "@src/app/stores/store";
+import LoadingComponent from "@src/app/layout/LoadingComponent";
 import ActivityDetailedHeader from "./ActivityDetailedHeader";
 import ActivityDetailedInfo from "./ActivityDetailedInfo";
 import ActivityDetailedChat from "./ActivityDetailedChat";

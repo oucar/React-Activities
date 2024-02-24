@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { Button, Header, Item, Segment, Image, Label } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import { useStore } from "../../../app/stores/store";
-import { theme } from "../../../app/common/colors/theme";
+import { Activity } from "@src/app/models/activity";
+import { useStore } from "@src/app/stores/store";
+import { theme } from "@src/app/common/colors/theme";
 
 // dimming the activity image
 const activityImageStyle = {

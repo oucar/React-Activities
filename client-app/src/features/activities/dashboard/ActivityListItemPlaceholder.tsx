@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Segment, Button, Placeholder } from "semantic-ui-react";
-import { theme } from "../../../app/common/colors/theme";
+import { theme } from "@src/app/common/colors/theme";
 
 export default function ActivityListItemPlaceholder() {
   return (
