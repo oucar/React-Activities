@@ -1,9 +1,9 @@
 import { ErrorMessage, Form, Formik } from "formik";
-import CustomTextInput from "../../app/common/form/CustomTextInput";
 import { Button, Header, Label } from "semantic-ui-react";
-import { useStore } from "../../app/stores/store";
 import { observer } from "mobx-react-lite";
-import { theme } from "../../app/common/colors/theme";
+import CustomTextInput from "@src/app/common/form/CustomTextInput";
+import { useStore } from "@src/app/stores/store";
+import { theme } from "@src/app/common/colors/theme";
 
 // When using store - always make the component an observer
 export default observer(function LoginForm() {

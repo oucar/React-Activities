@@ -3,10 +3,10 @@ import { observer } from 'mobx-react-lite'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { Segment, Header, Comment, Loader } from 'semantic-ui-react'
-import { useStore } from '../../../app/stores/store';
 import * as Yup from 'yup';
 import { formatDistanceToNow } from 'date-fns';
-import { theme } from "../../../app/common/colors/theme";
+import { useStore } from '@src/app/stores/store';
+import { theme } from "@src/app/common/colors/theme";
 
 interface Props {
     activityId: string;

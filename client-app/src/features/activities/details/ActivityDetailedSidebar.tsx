@@ -1,8 +1,8 @@
 import { Segment, List, Label, Item, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import { Activity } from "../../../app/models/activity";
-import { theme } from "../../../app/common/colors/theme";
+import { Activity } from "@src/app/models/activity";
+import { theme } from "@src/app/common/colors/theme";
 
 interface Props {
   activity: Activity;

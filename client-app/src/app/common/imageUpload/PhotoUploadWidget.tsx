@@ -3,7 +3,7 @@ import { Button, Grid, Header } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import PhotoUploadWidgetDropzone from './PhotoWidgetDropzone';
 import PhotoWidgetCropper from './PhotoWidgetCropper';
-import { theme } from "../../../app/common/colors/theme";
+import { theme } from "@src/app/common/colors/theme";
 
 interface Props {
     loading: boolean;

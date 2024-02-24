@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { Button, Header, Segment } from "semantic-ui-react";
-import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ActivityFormValues } from "../../../app/models/activity";
-import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { v4 as uuid } from "uuid";
-import CustomTextInput from "../../../app/common/form/CustomTextInput";
-import CustomTextArea from "../../../app/common/form/CustomTextArea";
-import CustomSelectInput from "../../../app/common/form/CustomSelectInput";
-import { categoryOptions } from "../../../app/common/options/categoryOptions";
-import CustomDateInput from "../../../app/common/form/CustomDateInput";
+import { useStore } from "@src/app/stores/store";
+import { ActivityFormValues } from "@src/app/models/activity";
+import LoadingComponent from "@src/app/layout/LoadingComponent";
+import CustomTextInput from "@src/app/common/form/CustomTextInput";
+import CustomTextArea from "@src/app/common/form/CustomTextArea";
+import CustomSelectInput from "@src/app/common/form/CustomSelectInput";
+import { categoryOptions } from "@src/app/common/options/categoryOptions";
+import CustomDateInput from "@src/app/common/form/CustomDateInput";
 import "react-datepicker/dist/react-datepicker.css";
-import { theme } from "../../../app/common/colors/theme";
+import { theme } from "@src/app/common/colors/theme";
 
 // Since Loading is an observable we have in activityStore,
 // The whole component function needs to be an observable.

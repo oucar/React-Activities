@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { Container, Header, Segment } from "semantic-ui-react";
-import { useStore } from "../../app/stores/store";
-import { theme } from "../../app/common/colors/theme";
+import { useStore } from "@src/app/stores/store";
+import { theme } from "@src/app/common/colors/theme";
 
 export default observer(function ServerError() {
     const {commonStore} = useStore();

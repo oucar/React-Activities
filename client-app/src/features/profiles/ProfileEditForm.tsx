@@ -1,10 +1,10 @@
 import { Form, Formik } from "formik";
 import { observer } from "mobx-react-lite";
 import { Button } from "semantic-ui-react";
-import CustomTextArea from "../../app/common/form/CustomTextArea";
-import CustomTextInput from "../../app/common/form/CustomTextInput";
-import { useStore } from "../../app/stores/store";
 import * as Yup from 'yup';
+import CustomTextArea from "@src/app/common/form/CustomTextArea";
+import CustomTextInput from "@src/app/common/form/CustomTextInput";
+import { useStore } from "@src/app/stores/store";
 
 interface Props {
     setEditMode: (editMode: boolean) => void;

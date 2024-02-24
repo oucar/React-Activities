@@ -1,10 +1,10 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { Activity, ActivityFormValues } from "../models/activity";
 import { toast } from "react-toastify";
 import { router } from "../router/Routes";
 import { store } from "../stores/store";
 import { User, UserFormValues } from "../models/user";
 import { PaginatedResult } from "../models/pagination";
+import { Activity, ActivityFormValues } from "../models/activity";
 import { Photo, Profile, UserActivity } from "../models/profile";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
