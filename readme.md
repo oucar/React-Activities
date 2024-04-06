@@ -11,10 +11,11 @@
 - **SignalR** implementation for real-time web functionality
 
 ## How to Run
-- Ensure that Docker is installed and configured on your system as the .NET application is configured to run on a Docker container. The Postgres database is also configured to run on a Docker container.
+- Ensure that Docker is installed and configured on your system as the .NET application is configured to run on a Docker container. The Postgres database is also configured to run on a Docker container. Additionally, please note that the application stores images in Cloudinary. Ensure you have the required Cloudinary credentials configured in your environment.
+
 - Run `npm run build` in the `/client-app` directory
 - Run `dotnet run` in the `/API` directory
-- You will also need appsettings.json and/or appsettings.Development.json files for the API to run that I removed from the Git repository for security reasons after I am done with the project. [Click here to view the commit](https://github.com/oucar/React-Activities/commit/1d82404754dc642ff494b37b2e3c5e2a4cb3c8a7)
+- You will also need appsettings.json and/or appsettings.Development.json files for the API to run that I removed from the Git repository for security reasons after I completed the project. [Click here to view the commit](https://github.com/oucar/React-Activities/commit/1d82404754dc642ff494b37b2e3c5e2a4cb3c8a7)
 ,and use the `appsettings.json` and `appsettings.Development.json` files as templates to create your own. I changed my own API keys and secrets after I was done with the project, so you will need to get your own API keys and secrets for the app to work.
 - NOTE: Make sure your postgres database is running in Docker or locally, and you have the correct connection string in the `appsettings.json` file. If starting from scratch, you can initialize a migration with `dotnet ef migrations add InitialCreate` and then run `dotnet ef database update` to create the database.
 ---
